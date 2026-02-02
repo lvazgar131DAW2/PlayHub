@@ -18,7 +18,7 @@ class JuegoListView(ListView):
 class JuegoDetailView(DetailView):
     model = Juego
     template_name = 'juegos/juego_detail.html'
-    context_object_name = 'juegos'
+    context_object_name = 'juego'
 
 
 class JuegoCreateView(CreateView):
@@ -42,9 +42,6 @@ class JuegoUpdateView(UpdateView):
     form_class = JuegoForm
     template_name = 'juegos/juego_form.html'
     success_url = reverse_lazy('juego_list')
-
-    def get_queryset(self):
-        return Juego.objects.filter(usuario=self.request.user)
 
     def form_valid(self, form):
         messages.success(self.request, 'Juego actualizado correctamente')

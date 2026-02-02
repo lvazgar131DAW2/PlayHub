@@ -11,25 +11,22 @@
         Crear, editar y borrar productos. (Sin relaciones entre modelos)
     </p>
 
-    <ul class="list">
-        {% for resena in resenas %}
-            <li>
-                <div>
-                    <strong>{{ resena.usuario_username }}</strong>
-                    <span class="muted"> — {{ resena.juego_titulo }}</span>
-                    <span class="muted"> — {{ resena.puntuacion }} €</span>
-                    <span class="muted"> — {{ resena.fecha }}</span>
-                    <span class="muted"> — {{ resena.comentario }}</span>
-                </div>
 
-                <div class="actions">
-                    <a class="btn" href="{% url 'resenas_list' %}">Volver</a>
-                </div>
-            </li>
-        {% empty %}
-            <li>No hay reseñas todavía.</li>
-        {% endfor %}
-    </ul>
+    <div>
+        <strong>{{ resena.usuario_username }}</strong>
+        <span class="muted"> — {{ resena.juego_titulo }}</span>
+        <span class="muted"> — {{ resena.puntuacion }} €</span>
+        <span class="muted"> — {{ resena.fecha }}</span>
+        <span class="muted"> — {{ resena.comentario }}</span>
+    </div>
+
+    <div class="actions">
+        <a class="btn" href="{% url 'resenas_list' %}">Volver</a>
+    </div>
+
+    {% if not resena %}
+        <p>No hay reseñas todavía.</p>
+    {% endif %}
 
 </div>
 {% endblock %}
