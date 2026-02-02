@@ -1,0 +1,26 @@
+{% extends "juegos/base.html" %}
+
+{% block title %}
+Confirmar borrado
+{% endblock %}
+
+{% block content %}
+<div class="card">
+
+    <h2>Confirmar borrado</h2>
+
+    <p>
+        ¿Seguro que quieres borrar <strong>{{ resena.comentario }}</strong>?
+    </p>
+
+    <form method="post">
+        {% csrf_token %}
+
+        <div class="actions">
+            <button class="btn danger" type="submit">Sí, borrar</button>
+            <a class="btn" href="{% url 'resenas_list' %}">Cancelar</a>
+        </div>
+
+    </form>
+</div>
+{% endblock %}

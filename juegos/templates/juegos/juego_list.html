@@ -1,0 +1,37 @@
+{% extends "juegos/base.html" %}
+
+{% block title %}Lista de juegos{% endblock %}
+
+{% block content %}
+<div class="card">
+
+    <h2>Lista de juegos</h2>
+
+    <p class="muted">
+        Crear, editar y borrar productos. (Sin relaciones entre modelos)
+    </p>
+
+    <ul class="list">
+        {% for juego in juegos %}
+            <li>
+                <div>
+                    <strong>{{ juego.titulo }}</strong>
+                    <span class="muted"> — {{ juego.precio }} €</span>
+                </div>
+
+                <div class="actions">
+                    <a class="btn warning" href="{% url 'juego_detail' juego.pk%}">Detalles</a>
+                    <a class="btn" href="{% url 'juego_create' juego.pk %}">
+                        Crear
+                    </a>
+                    <a class="btn primary" href="{% url 'juego_update' juego.pk %}">Editar</a>
+                    <a class="btn danger" href="{% url 'juego_delete' juego.pk %}">Borrar</a>
+                </div>
+            </li>
+        {% empty %}
+            <li>No hay juegos todavía.</li>
+        {% endfor %}
+    </ul>
+
+</div>
+{% endblock %}

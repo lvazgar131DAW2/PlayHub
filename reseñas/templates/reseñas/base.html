@@ -1,0 +1,36 @@
+{% load static %}
+<!doctype html>
+<html lang="es">
+    <head>
+        <meta charset="utf-8">
+        <title>{% block title %}Reseñas{% endblock %}</title>
+        <link rel="stylesheet" href="{% static 'reseñas/css/estilos.css' %}">
+    </head>
+
+
+    <body>
+
+        <nav class="nav">
+
+            <div class="container">
+                <a class="brand" href="{% url 'resenas_list' %}">Lista de reseñas</a>
+                <div class="actions">
+                    <a class="btn primary" href="{% url 'resenas_create' %}">Nueva reseña</a>
+
+                </div>
+            </div>
+        </nav>
+
+        <main class="container">
+            {% if messages %}
+                <ul class="messages">
+                {% for message in messages %}
+                    <li>{{ message }}</li>
+                {% endfor %}
+                </ul>
+            {% endif %}
+            {% block content %}{% endblock %}
+        </main>
+
+</body>
+</html>

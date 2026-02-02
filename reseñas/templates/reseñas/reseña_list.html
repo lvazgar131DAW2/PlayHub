@@ -1,0 +1,35 @@
+{% extends "reseñas/base.html" %}
+
+{% block title %}Lista de reseñas{% endblock %}
+
+{% block content %}
+<div class="card">
+
+    <h2>Lista de reseñas</h2>
+
+    <p class="muted">
+        Crear, editar y borrar productos. (Sin relaciones entre modelos)
+    </p>
+
+    <ul class="list">
+        {% for resena in resenas %}
+            <li>
+                <div>
+                    <strong>{{ resena.usuario_username }}</strong>
+                    <span class="muted"> — {{ resena.comentario }}</span>
+                </div>
+
+                <div class="actions">
+                    <a class="btn warning" href="{% url 'resena_detail' resena.pk%}">Detalles</a>
+                    <a class="btn" href="{% url 'resena_create' resena.pk %}">Crear</a>
+                    <a class="btn primary" href="{% url 'resena_update' resena.pk %}">Editar</a>
+                    <a class="btn danger" href="{% url 'resena_delete' resena.pk %}">Borrar</a>
+                </div>
+            </li>
+        {% empty %}
+            <li>No hay reseñas todavía.</li>
+        {% endfor %}
+    </ul>
+
+</div>
+{% endblock %}

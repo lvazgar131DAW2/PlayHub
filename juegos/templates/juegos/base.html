@@ -1,0 +1,36 @@
+{% load static %}
+<!doctype html>
+<html lang="es">
+    <head>
+        <meta charset="utf-8">
+        <title>{% block title %}Juegos{% endblock %}</title>
+        <link rel="stylesheet" href="{% static 'juegos/css/estilos.css' %}">
+    </head>
+
+
+    <body>
+
+        <nav class="nav">
+
+            <div class="container">
+                <a class="brand" href="{% url 'juego_list' %}">Lista de juegos</a>
+                <div class="actions">
+                    <a class="btn primary" href="{% url 'juego_create' %}">Nuevo juego</a>
+
+                </div>
+            </div>
+        </nav>
+
+        <main class="container">
+            {% if messages %}
+                <ul class="messages">
+                {% for message in messages %}
+                    <li>{{ message }}</li>
+                {% endfor %}
+                </ul>
+            {% endif %}
+            {% block content %}{% endblock %}
+        </main>
+
+</body>
+</html>

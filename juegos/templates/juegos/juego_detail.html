@@ -1,0 +1,34 @@
+{% extends "juegos/base.html" %}
+
+{% block title %}Detalles{% endblock %}
+
+{% block content %}
+<div class="card">
+
+    <h2>Detalles del juego</h2>
+
+    <p class="muted">
+        Crear, editar y borrar productos. (Sin relaciones entre modelos)
+    </p>
+
+    <ul class="list">
+        {% for juego in juegos %}
+            <li>
+                <div>
+                    <strong>{{ juego.titulo }}</strong>
+                    <span class="muted"> — {{ juego.plataforma }}</span>
+                    <span class="muted"> — {{ juego.precio }} €</span>
+                    <span class="muted"> — {{ juego.fecha_lanzamiento }}</span>
+                </div>
+
+                <div class="actions">
+                    <a class="btn" href="{% url 'juego_list' %}">Volver</a>
+                </div>
+            </li>
+        {% empty %}
+            <li>No hay juegos todavía.</li>
+        {% endfor %}
+    </ul>
+
+</div>
+{% endblock %}

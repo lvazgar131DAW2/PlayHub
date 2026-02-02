@@ -1,0 +1,27 @@
+{% extends "juegos/base.html" %}
+
+{% block title %}
+Formulario
+{% endblock %}
+
+{% block content %}
+<div class="card">
+
+    {% if action == "crear" %}
+        <h2>Crear juego</h2>
+    {% else %}
+        <h2>Editar juego: {{ juego.titulo }}</h2>
+    {% endif %}
+
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+
+        <div class="actions">
+            <button class="btn primary" type="submit">Guardar</button>
+            <a class="btn" href="{% url 'juego_list' %}">Volver</a>
+        </div>
+    </form>
+
+</div>
+{% endblock %}
