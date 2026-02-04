@@ -5,7 +5,7 @@ from .models import Resena
 class ResenaForm(ModelForm):
     class Meta:
         model = Resena
-        fields = ['juego_titulo', 'puntuacion', 'comentario']
+        fields = ['juego', 'puntuacion', 'comentario']
 
     def clean_comentario(self):
         comentario = self.cleaned_data['comentario']
